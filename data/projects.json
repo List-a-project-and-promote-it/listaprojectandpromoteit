@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1",
+    "slug": "hmpl",
+    "name": "HMPL",
+    "description": "Lightweight server-oriented template language for JavaScript.",
+    "isNew": true,
+    "url": "https://hmpl-lang.dev",
+    "images": [
+      "/images/hmpl/photo1.png",
+      "/images/hmpl/photo2.png",
+      "/images/hmpl/photo3.png"
+    ],
+    "tags": ["javascript", "fetch", "html", "ajax"],
+    "updatedAt": "2026-07-06",
+    "socials": {
+      "twitter": "https://x.com/hmpljs",
+      "github": "https://github.com/hmpl-language/hmpl",
+      "youtube": "https://www.youtube.com/channel/UC4FyakWfS1C0cip9YeecE8w"
+    },
+    "info": [
+      {
+        "type": "text",
+        "content": "🌐 HMPL (/ˈhæmpəl/ portmanteau of the words Cample and HTML) is a small template language for displaying UI from server to client. It is based on customizable requests sent to the server via fetch and processed into ready-made HTML. The language is syntactically object-based and integrated with JSON5 and DOMPurify. Reduce the size of your javascript files and display the same UI as if it was written in a modern framework!"
+      },
+      {
+        "type": "heading",
+        "content": "Example"
+      },
+      {
+        "type": "code",
+        "content": "<div>\n  {{#request src=\"/api/my-component.html\"}}\n    {{#indicator trigger=\"pending\"}}\n      <p>Loading...</p>\n    {{/indicator}}\n  {{/request}}\n</div>"
+      },
+      {
+        "type": "heading",
+        "content": "How it works?"
+      },
+      {
+        "type": "text",
+        "content": "The HTML you use on your site is enhanced by adding special blocks that resemble components in syntax, but are more like “helper blocks” like in Handlebars."
+      },
+      {
+        "type": "text",
+        "content": "In these blocks you describe the request that will be sent to the server to get the finished components from there. This includes HTTP methods, request frequency and many other things that are used when talking about fetch."
+      },
+      {
+        "type": "text",
+        "content": "To describe it more briefly, it is something in between HTMX and EJS 👀."
+      },
+      {
+        "type": "heading",
+        "content": "Why HMPL?"
+      },
+      {
+        "type": "text",
+        "content": "Unlike other similar modules, the template language provides more complete customization due to a well-thought-out balance between HTML and JS. HMPL supports modern EcmaScript standards - thanks to its well-thought-out functionality, you will not depend on versions."
+      },
+      {
+        "type": "text",
+        "content": "Also, the template language format itself allows you to work with .hmpl extension files if you use Vite or WebPack."
+      }
+    ]
+  }
+]
