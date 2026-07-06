@@ -42,6 +42,10 @@ Yes, of course they will.
 
 Platforms like these often generate negative reviews, but this platform is simply created as a bonus to the main promotion. There are no guarantees of results; it's just a matter of adding to an article, tweeting, and so on. We do what we can.
 
+## Tech stack
+
+Next.js v16 (App Router) + Tailwind v4 + Data in JSON format
+
 ## Contribution
 
 The platform is open to your ideas and code!
