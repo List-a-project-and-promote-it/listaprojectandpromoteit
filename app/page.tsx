@@ -39,6 +39,21 @@ export const metadata: Metadata = {
     description:
       "A place to promote your projects on social media. Get featured in articles, tweets and other platforms — submit once, no subscription.",
     url: "/",
+    images: [
+      {
+        url: "/images/preview.png",
+        width: 1071,
+        height: 602,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Promote your projects | ${siteConfig.name}`,
+    description:
+      "A place to promote your projects on social media. Get featured in articles, tweets and other platforms — submit once, no subscription.",
+    images: ["/images/preview.png"],
   },
 }
 

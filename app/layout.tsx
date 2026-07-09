@@ -36,12 +36,21 @@ export const metadata: Metadata = {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
     url: "/",
+    images: [
+      {
+        url: "/images/preview.png",
+        width: 1071,
+        height: 602,
+        alt: SITE_NAME,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
     creator: "@aanthonymax",
+    images: ["/images/preview.png"],
   },
   robots: {
     index: true,
