@@ -9,10 +9,7 @@ import { Button } from "components/ui/button"
 import { cn } from "lib/utils"
 import { siteConfig } from "lib/site"
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-]
+const navLinks = [{ label: "Home", href: "/" }]
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()

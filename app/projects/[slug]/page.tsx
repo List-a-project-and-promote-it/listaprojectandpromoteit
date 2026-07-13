@@ -91,7 +91,7 @@ export default async function ProjectPage({
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <Link
-        href="/projects"
+        href="/"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="size-4" />

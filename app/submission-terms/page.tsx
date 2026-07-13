@@ -7,10 +7,11 @@ const EMAIL = "aanthonymaxgithub@gmail.com"
 export const metadata: Metadata = {
   title: "Project Submission Terms",
   description:
-    "The terms that apply when submitting a project, including the submission fee and refund policy.",
+    "The terms that apply when submitting a project, including free and paid plans, fees, and refund policy.",
   keywords: [
     "project submission terms",
     "submission fee",
+    "free listing",
     "refund policy",
     "submit project",
   ],
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Project Submission Terms | ${siteConfig.name}`,
     description:
-      "The terms that apply when submitting a project, including the submission fee and refund policy.",
+      "The terms that apply when submitting a project, including free and paid plans, fees, and refund policy.",
     url: "/submission-terms",
   },
 }
@@ -31,25 +32,36 @@ type Section = { title: string; blocks: Block[] }
 
 const sections: Section[] = [
   {
-    title: "1. Submission Fee",
+    title: "1. Plans",
     blocks: [
       {
         type: "p",
-        text: "A one-time fee of $40 USD is required for each project submission.",
+        text: "You can submit a project under one of two plans:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Free — your project is added to the directory so people can discover it on the platform. No payment is required.",
+          "Featured — a one-time fee of $40 USD. Includes everything in the Free plan, plus promotion in curated articles, X (Twitter) posts, and other relevant channels.",
+        ],
       },
       {
         type: "p",
-        text: "This fee covers the time spent reviewing, preparing, publishing, and promoting your project.",
+        text: "The paid fee covers the time spent reviewing, preparing, publishing, and promoting your project beyond basic directory listing.",
       },
     ],
   },
   {
     title: "2. Refund Policy",
     blocks: [
-      { type: "p", text: "All payments are final." },
+      { type: "p", text: "All payments for the Featured plan are final." },
       {
         type: "p",
         text: "Because the submission fee covers the time spent reviewing, preparing, publishing, and promoting your project, no refunds will be issued after payment has been received, regardless of the number of views, clicks, visitors, sales, or any other results your project may receive.",
+      },
+      {
+        type: "p",
+        text: "The Free plan does not involve any payment and therefore has no refund terms.",
       },
     ],
   },
@@ -80,7 +92,11 @@ const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "The website owner will make reasonable efforts to publish and promote listed projects through the website and related channels where appropriate.",
+        text: "Under the Free plan, your project is listed in the directory and can be discovered by visitors browsing the platform.",
+      },
+      {
+        type: "p",
+        text: "Under the Featured plan, the website owner will make reasonable efforts to publish and promote listed projects through the website and related channels where appropriate, including articles, X posts, and other platforms.",
       },
       {
         type: "p",
@@ -115,7 +131,7 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "Submitting a new or substantially modified project may require a new submission fee.",
+        text: "Submitting a new or substantially modified project may require a new submission fee if you choose the Featured plan.",
       },
     ],
   },
@@ -135,11 +151,12 @@ export default function SubmissionTermsPage() {
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <h1 className="text-2xl font-semibold">Project Submission Terms</h1>
       <p className="text-muted-foreground mt-2 text-sm">
-        Last updated: July 5, 2026
+        Last updated: July 14, 2026
       </p>
 
       <p className="text-muted-foreground mt-6 leading-relaxed">
-        By submitting a project, you agree to the following terms.
+        By submitting a project, you agree to the following terms. Projects can
+        be added for free or under the paid Featured plan.
       </p>
 
       <div className="mt-8 flex flex-col gap-8">

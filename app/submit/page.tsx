@@ -1,8 +1,17 @@
 import * as React from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  ArrowUpRight,
+  Check,
+  Newspaper,
+  PlusCircle,
+  Share2,
+} from "lucide-react"
 
 import { CopyBlock } from "components/copy-block"
+import { Button } from "components/ui/button"
+import { cn } from "lib/utils"
 import { siteConfig } from "lib/site"
 
 const EMAIL = "aanthonymaxgithub@gmail.com"
@@ -12,7 +21,7 @@ const TWITTER_URL = "https://x.com/aanthonymax"
 export const metadata: Metadata = {
   title: "Submit a project",
   description:
-    "Get your project listed. Reach out by email or on X — the listing fee is $40 via PayPal.",
+    "Get your project listed. Start free or go featured for $40 — promotion in articles, X posts and other platforms.",
   keywords: [
     "submit project",
     "list project",
@@ -23,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Submit a project | ${siteConfig.name}`,
     description:
-      "Get your project listed. Reach out by email or on X — the listing fee is $40 via PayPal.",
+      "Get your project listed. Start free or go featured for $40 — promotion in articles, X posts and other platforms.",
     url: "/submit",
   },
 }
@@ -62,28 +71,196 @@ function XIcon(props: React.ComponentProps<"svg">) {
   )
 }
 
+type Plan = {
+  name: string
+  price: string
+  period: string
+  description: string
+  features: string[]
+  highlighted?: boolean
+}
+
+const plans: Plan[] = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "forever",
+    description: "Get listed in the directory so people can find your project.",
+    features: ["Listed on the platform", "Discoverable in the directory"],
+  },
+  {
+    name: "Featured",
+    price: "$40",
+    period: "one-time",
+    description: "Full promotion through articles, X, and other platforms.",
+    features: [
+      "Everything in Free",
+      "Featured in curated articles",
+      "Promotion in X (Twitter) posts",
+      "Promotion on other platforms",
+    ],
+    highlighted: true,
+  },
+]
+
+type Offering = {
+  icon: React.ComponentType<{ className?: string }>
+  title: string
+  description: string
+  links?: { label: string; href: string }[]
+}
+
+const offerings: Offering[] = [
+  {
+    icon: Newspaper,
+    title: "Featured in articles",
+    description:
+      "Your project gets collected and highlighted in curated articles on the platform.",
+    links: [
+      {
+        label: "12 Open Source Gems To Become The Ultimate Developer",
+        href: "https://dev.to/anthonymax/12-open-source-gems-to-become-the-ultimate-developer-8cc",
+      },
+      {
+        label: "9 Open Source Gems To Become The Ultimate Developer",
+        href: "https://dev.to/anthonymax/9-open-source-gems-to-become-the-ultimate-developer-2pnb",
+      },
+    ],
+  },
+  {
+    icon: XIcon,
+    title: "Promotion in X posts",
+    description:
+      "We promote your project through posts on X (Twitter) to reach a wider audience.",
+  },
+  {
+    icon: Share2,
+    title: "Promotion on other platforms",
+    description:
+      "Your project is shared in other relevant channels and communities (Medium, daily.dev, etc).",
+  },
+  {
+    icon: PlusCircle,
+    title: "Listed on the platform",
+    description:
+      "Your project is added to the directory so people can discover it any time.",
+  },
+]
+
 export default function SubmitPage() {
   return (
-    <main className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
+    <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
       <div className="flex flex-col items-center text-center">
-        <span className="flex size-16 items-center justify-center rounded-2xl border text-primary">
-          <PaypalIcon className="size-8" />
-        </span>
-
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight">
+        <h1 className="text-3xl font-semibold tracking-tight">
           Submit a project
         </h1>
         <p className="mt-3 max-w-md text-muted-foreground">
-          Reach out by email or on X to get your project listed. The listing fee
-          is{" "}
-          <span className="font-semibold text-foreground">$40 via PayPal</span>.
+          Pick a plan and reach out by email or on X to get your project listed.
         </p>
       </div>
 
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        {plans.map((plan) => (
+          <div
+            key={plan.name}
+            className={cn(
+              "flex flex-col rounded-xl border p-6",
+              plan.highlighted &&
+                "border-foreground/30 ring-1 ring-foreground/10"
+            )}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {plan.highlighted && (
+                  <span className="flex size-9 items-center justify-center rounded-lg border text-primary">
+                    <PaypalIcon className="size-4" />
+                  </span>
+                )}
+                <h2 className="font-medium">{plan.name}</h2>
+              </div>
+              {plan.highlighted && (
+                <span className="rounded-full border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                  Recommended
+                </span>
+              )}
+            </div>
+            <div className="mt-4 flex items-baseline gap-1.5">
+              <span className="text-4xl font-semibold tracking-tight">
+                {plan.price}
+              </span>
+              <span className="text-sm text-muted-foreground">
+                {plan.period}
+              </span>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              {plan.description}
+            </p>
+            <ul className="mt-6 flex flex-col gap-3">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2 text-sm">
+                  <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <Button
+              asChild
+              className="mt-6"
+              variant={plan.highlighted ? "default" : "outline"}
+            >
+              <a href="#get-started">Get started</a>
+            </Button>
+          </div>
+        ))}
+      </div>
+
+      <section className="mt-16">
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            What we offer
+          </h2>
+          <p className="mt-2 text-muted-foreground">
+            Everything you need to get your project in front of people.
+          </p>
+        </div>
+        <ul className="mt-8 divide-y rounded-xl border">
+          {offerings.map((offer) => (
+            <li
+              key={offer.title}
+              className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4"
+            >
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border text-primary">
+                <offer.icon className="size-4" />
+              </span>
+              <span className="font-medium">{offer.title}</span>
+              <span className="min-w-0 flex-1 text-sm text-muted-foreground">
+                {offer.description}
+              </span>
+              {offer.links && (
+                <span className="flex w-full flex-wrap gap-x-4 gap-y-1 pl-12 sm:w-auto sm:pl-0">
+                  {offer.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="group inline-flex items-center gap-1 text-xs font-medium text-foreground underline-offset-4 hover:underline"
+                    >
+                      <ArrowUpRight className="size-3.5 text-muted-foreground transition-colors group-hover:text-foreground" />
+                      {link.label}
+                    </a>
+                  ))}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <div className="mt-8 rounded-xl border p-5">
         <div className="flex items-center justify-between text-sm">
-          <span className="font-medium">Projects added</span>
-          <span className="tabular-nums text-muted-foreground">0 of 15</span>
+          <span className="font-medium">Paid projects added</span>
+          <span className="text-muted-foreground tabular-nums">0 of 15</span>
         </div>
         <div
           className="mt-3 h-2 w-full overflow-hidden rounded-full bg-muted"
@@ -98,12 +275,15 @@ export default function SubmitPage() {
           />
         </div>
         <p className="mt-3 text-sm text-muted-foreground">
-          In July 2026, due to the volume of work, we&rsquo;ll be able to add the
-          first fifteen projects.
+          In July 2026, due to the volume of work, we&rsquo;ll be able to add
+          the first fifteen paid projects.
         </p>
       </div>
 
-      <div className="mt-8 rounded-xl border p-5 text-left">
+      <div
+        id="get-started"
+        className="mt-8 scroll-mt-20 rounded-xl border p-5 text-left"
+      >
         <p className="text-sm font-medium">In your message, please include</p>
         <p className="mt-1 text-sm text-muted-foreground">
           Prepare an object with a title, tags, a short description, and a URL.
@@ -127,7 +307,7 @@ export default function SubmitPage() {
         />
       </div>
 
-      <div className="mt-10 flex flex-col gap-3">
+      <div id="contact" className="mt-10 flex scroll-mt-20 flex-col gap-3">
         <a
           href={`mailto:${EMAIL}`}
           className="flex items-center gap-4 rounded-xl border p-4 transition-colors hover:bg-accent"
