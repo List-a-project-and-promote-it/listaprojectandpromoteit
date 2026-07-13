@@ -84,7 +84,7 @@ function ProjectsGrid({
       {projects.map((project) => (
         <Card
           key={project.id}
-          className="relative overflow-hidden transition-colors hover:border-foreground/20"
+          className="relative h-full overflow-hidden transition-colors hover:border-foreground/20"
         >
           <Link
             href={`/projects/${project.slug}`}
@@ -135,7 +135,7 @@ function ProjectsGrid({
               ))}
             </div>
           </CardContent>
-          <CardFooter className="text-muted-foreground justify-between text-xs">
+          <CardFooter className="text-muted-foreground mt-auto justify-between text-xs">
             <span>Updated {project.updatedAt}</span>
             {project.socials && (
               <div className="relative z-10 flex items-center gap-0.5">

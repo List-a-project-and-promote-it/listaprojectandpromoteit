@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { Star } from "lucide-react"
 
@@ -18,26 +20,36 @@ function formatStars(count: number) {
   return String(count)
 }
 
-async function getStars(): Promise<number | null> {
-  try {
-    const res = await fetch(`https://api.github.com/repos/${REPO}`, {
-      headers: { Accept: "application/vnd.github+json" },
-      next: { revalidate: 3600 },
-    })
-    if (!res.ok) {
-      return null
-    }
-    const data = (await res.json()) as { stargazers_count?: number }
-    return typeof data.stargazers_count === "number"
-      ? data.stargazers_count
-      : null
-  } catch {
-    return null
-  }
-}
+function GithubStars() {
+  const [stars, setStars] = React.useState<number | null>(null)
 
-async function GithubStars() {
-  const stars = await getStars()
+  React.useEffect(() => {
+    let cancelled = false
+
+    async function load() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}`, {
+          headers: { Accept: "application/vnd.github+json" },
+          cache: "no-store",
+        })
+        if (!res.ok) {
+          return
+        }
+        const data = (await res.json()) as { stargazers_count?: number }
+        if (!cancelled && typeof data.stargazers_count === "number") {
+          setStars(data.stargazers_count)
+        }
+      } catch {
+        // ignore network errors, keep icon-only state
+      }
+    }
+
+    load()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   return (
     <a
