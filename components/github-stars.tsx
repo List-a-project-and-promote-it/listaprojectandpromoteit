@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Star } from "lucide-react"
 
-const REPO = "List-a-project-and-promote-it/listaprojectandpromoteit"
+const REPO = "EmbedCatalog/embedcatalog"
 
 function GithubIcon(props: React.ComponentProps<"svg">) {
   return (

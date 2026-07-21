@@ -45,7 +45,7 @@ const navLinks = [
 const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/List-a-project-and-promote-it/listaprojectandpromoteit",
+    href: "https://github.com/EmbedCatalog/embedcatalog",
     icon: GithubIcon,
   },
   { label: "Email", href: "mailto:aanthonymaxgithub@gmail.com", icon: MailIcon },

@@ -12,7 +12,7 @@ const SITE_NAME = siteConfig.name
 const SITE_DESCRIPTION = siteConfig.slogan
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://listaprojectandpromoteit.digital"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,

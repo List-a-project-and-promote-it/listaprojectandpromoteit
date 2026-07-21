@@ -1,15 +1,15 @@
-# List a project and promote it!
+# EmbedCatalog
 
-<a href="https://listaprojectandpromoteit.digital/"><img align="right" width="250" src="https://github.com/list-a-project-and-promote-it/listaprojectandpromoteit/raw/main/public/images/logo.png" alt="list-a-project-and-promote-it!" title="List a project and promote it!" /></a>
+<a href="https://embedcatalog.digital/"><img align="right" width="250" src="https://github.com/EmbedCatalog/embedcatalog/raw/main/public/images/logo.png" alt="EmbedCatalog" title="EmbedCatalog" /></a>
 
-[![license](https://img.shields.io/github/license/List-a-project-and-promote-it/listaprojectandpromoteit?logo=&color=fff)](https://github.com/List-a-project-and-promote-it/listaprojectandpromoteit/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/EmbedCatalog/embedcatalog?logo=&color=fff)](https://github.com/EmbedCatalog/embedcatalog/blob/main/LICENSE)
 [![x.com](https://img.shields.io/badge/twitter-000?logo=x&logoColor=fff)](https://x.com/aanthonymax)
 
 One day, I had the idea to create a platform for projects. But I noticed that in most similar services, you just add your project, and the platforms don't care at all. I'd like to do it differently.
 
 **Briefly about the name**
 
-But first, I'd like to say that the name was invented in ten minutes. It may be long, but I think it's perfectly fitting.
+But first, I'd like to say that the name was invented in ten minutes. It may be short, but I think it's perfectly fitting.
 
 ## About
 

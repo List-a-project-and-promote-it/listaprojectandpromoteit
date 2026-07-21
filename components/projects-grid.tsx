@@ -4,7 +4,7 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { Badge } from "components/ui/badge"
+import { Embed } from "components/ui/embed"
 import {
   Card,
   CardAction,
@@ -110,7 +110,7 @@ function ProjectsGrid({
             <CardTitle>{project.name}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
             <CardAction className="relative z-10 flex items-center gap-2">
-              {project.isNew && <Badge>New</Badge>}
+              {project.isNew && <Embed>New</Embed>}
               <a
                 href={project.url}
                 target="_blank"
@@ -125,14 +125,14 @@ function ProjectsGrid({
           <CardContent>
             <div className="relative z-10 flex w-fit flex-wrap gap-1">
               {project.tags.map((tag) => (
-                <Badge
+                <Embed
                   key={tag}
                   variant="outline"
                   className={onTagClick ? "cursor-pointer" : undefined}
                   onClick={onTagClick ? () => onTagClick(tag) : undefined}
                 >
                   {tag}
-                </Badge>
+                </Embed>
               ))}
             </div>
           </CardContent>

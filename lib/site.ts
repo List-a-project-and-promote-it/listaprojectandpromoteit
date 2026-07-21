@@ -1,5 +1,6 @@
 export const siteConfig = {
-  name: "List a project and promote it!",
+  name: "EmbedCatalog",
+  url: "https://embedcatalog.digital",
   slogan:
     "The name was invented in ten minutes, but we will work on your projects longer.",
 }

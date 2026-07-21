@@ -5,11 +5,12 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 
-import { Badge } from "components/ui/badge"
+import { Embed } from "components/ui/embed"
 import { Button } from "components/ui/button"
 import { CopyBlock } from "components/copy-block"
 import { CopyLinkButton } from "components/copy-link-button"
 import { ImageCarousel } from "components/image-carousel"
+import { ProjectEmbeds } from "components/project-embeds"
 import { ProjectGithubStats } from "components/project-github-stats"
 import { type Project } from "components/projects-grid"
 import projectsData from "data/projects.json"
@@ -104,7 +105,7 @@ export default async function ProjectPage({
         <div>
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-semibold">{project.name}</h1>
-            {project.isNew && <Badge>New</Badge>}
+            {project.isNew && <Embed>New</Embed>}
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
             Updated {project.updatedAt}
@@ -168,6 +169,8 @@ export default async function ProjectPage({
         <ImageCarousel images={project.images} alt={project.name} />
       </div>
 
+      <ProjectEmbeds slug={project.slug} projectName={project.name} />
+
       <p className="mt-6 leading-relaxed">{project.description}</p>
 
       {project.info && project.info.length > 0 && (
@@ -221,9 +224,9 @@ export default async function ProjectPage({
         </h2>
         <div className="flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
-            <Badge key={tag} variant="outline">
+            <Embed key={tag} variant="outline">
               {tag}
-            </Badge>
+            </Embed>
           ))}
         </div>
       </div>

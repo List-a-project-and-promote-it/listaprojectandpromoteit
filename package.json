@@ -1,14 +1,14 @@
 {
-  "name": "listaprojectandpromoteit",
+  "name": "embedcatalog",
   "version": "0.0.1",
   "type": "module",
   "author": "Anthony Max",
-  "homepage": "https://listaprojectandpromoteit.digital",
+  "homepage": "https://embedcatalog.digital",
   "license": "AGPL-3.0",
   "description": "",
   "scripts": {
     "start": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/copy-embed-pngs.mjs",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit"
