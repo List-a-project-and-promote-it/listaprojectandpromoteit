@@ -8,7 +8,7 @@
   "description": "",
   "scripts": {
     "start": "next dev",
-    "build": "next build && node scripts/copy-embed-pngs.mjs",
+    "build": "next build && jiti scripts/copy-embed-pngs.ts",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit"

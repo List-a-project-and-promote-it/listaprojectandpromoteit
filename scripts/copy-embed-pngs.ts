@@ -1,7 +1,7 @@
 import { copyFile, readdir, stat } from "node:fs/promises"
 import { basename, dirname, join } from "node:path"
 
-async function walk(dir) {
+async function walk(dir: string) {
   const entries = await readdir(dir)
   await Promise.all(
     entries.map(async (name) => {
