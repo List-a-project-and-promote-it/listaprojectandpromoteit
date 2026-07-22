@@ -2,7 +2,8 @@
 
 <a href="https://embedcatalog.com"><img align="right" width="250" src="https://github.com/EmbedCatalog/embedcatalog/raw/main/public/images/logo.png" alt="EmbedCatalog" title="EmbedCatalog" /></a>
 
-[![license](https://img.shields.io/github/license/EmbedCatalog/embedcatalog?logo=&color=fff)](https://github.com/EmbedCatalog/embedcatalog/blob/main/LICENSE)
+[![license](https://embedcatalog.com/embed/hmpl/license/light/license.png)](https://github.com/EmbedCatalog/embedcatalog/blob/main/LICENSE)
+[![embdecatalog](https://embedcatalog.com/embed/hmpl/added/dark/added.png)](https://embedcatalog.com)
 [![x.com](https://img.shields.io/badge/twitter-000?logo=x&logoColor=fff)](https://x.com/aanthonymax)
 
 One day, I had the idea to create a platform for projects. But I noticed that in most similar services, you just add your project, and the platforms don't care at all. I'd like to do it differently.
