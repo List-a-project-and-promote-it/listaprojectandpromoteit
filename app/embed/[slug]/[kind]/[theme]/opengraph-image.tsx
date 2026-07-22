@@ -5,8 +5,12 @@ import { ImageResponse } from "next/og"
 import { type Project } from "components/projects-grid"
 import projectsData from "data/projects.json"
 import {
+  embedKinds,
+  embedThemes,
+  getEmbedSize,
   getEmbedText,
   getEmbedTheme,
+  type EmbedKind,
   type EmbedTheme,
 } from "lib/embed"
 import { siteConfig } from "lib/site"
@@ -15,27 +19,35 @@ const projects = projectsData as Project[]
 
 export const dynamic = "force-static"
 export const alt = "EmbedCatalog embed"
-export const size = { width: 160, height: 28 }
 export const contentType = "image/png"
 
 export function generateStaticParams() {
-  return projects.flatMap((project) => [
-    { slug: project.slug, theme: "light" },
-    { slug: project.slug, theme: "dark" },
-  ])
+  return projects.flatMap((project) =>
+    embedKinds.flatMap((kind) =>
+      embedThemes.map((theme) => ({
+        slug: project.slug,
+        kind,
+        theme,
+      }))
+    )
+  )
 }
 
 export default async function EmbedImage({
   params,
 }: {
-  params: Promise<{ slug: string; theme: string }>
+  params: Promise<{ slug: string; kind: string; theme: string }>
 }) {
-  const { slug, theme: themeParam } = await params
+  const { slug, kind: kindParam, theme: themeParam } = await params
+  const kind: EmbedKind = kindParam === "added" ? "added" : "license"
   const theme: EmbedTheme = themeParam === "dark" ? "dark" : "light"
+  const size = getEmbedSize(kind)
   const project = projects.find((item) => item.slug === slug)
   const text = project
-    ? await getEmbedText(project)
-    : `Featured on: ${siteConfig.name}`
+    ? await getEmbedText(project, kind)
+    : kind === "added"
+      ? `Added to: ${siteConfig.name}`
+      : "License: Unknown"
   const colors = getEmbedTheme(theme)
 
   const font = await readFile(

@@ -7,12 +7,16 @@ function buildEmbedHtml({
   projectUrl,
   projectName,
   embedSrc,
+  width,
+  height,
 }: {
   projectUrl: string
   projectName: string
   embedSrc: string
+  width: number
+  height: number
 }) {
-  return `<a href="${projectUrl}" target="_blank" rel="noreferrer noopener"><img src="${embedSrc}" alt="${projectName} on ${siteConfig.name}" style="width: 160px; height: 28px;" width="160" height="28" /></a>`
+  return `<a href="${projectUrl}" target="_blank" rel="noreferrer noopener"><img src="${embedSrc}" alt="${projectName} on ${siteConfig.name}" style="width: ${width}px; height: ${height}px;" width="${width}" height="${height}" /></a>`
 }
 
 function ProjectEmbeds({
@@ -23,31 +27,26 @@ function ProjectEmbeds({
   projectName: string
 }) {
   const projectUrl = `${siteConfig.url}/projects/${slug}`
-  const lightEmbed = `${siteConfig.url}/embed/${slug}/light/license.png`
-  const darkEmbed = `${siteConfig.url}/embed/${slug}/dark/license.png`
 
-  const embeds = [
+  const groups = [
     {
-      id: "light",
-      label: "Light",
-      previewSrc: `/embed/${slug}/light/opengraph-image`,
-      code: buildEmbedHtml({
-        projectUrl,
-        projectName,
-        embedSrc: lightEmbed,
-      }),
+      title: "License",
+      kind: "license",
+      width: 160,
+      height: 28,
     },
     {
-      id: "dark",
-      label: "Dark",
-      previewSrc: `/embed/${slug}/dark/opengraph-image`,
-      code: buildEmbedHtml({
-        projectUrl,
-        projectName,
-        embedSrc: darkEmbed,
-      }),
+      title: "Added to",
+      kind: "added",
+      width: 200,
+      height: 28,
     },
-  ]
+  ] as const
+
+  const themes = [
+    { id: "light", label: "Light" },
+    { id: "dark", label: "Dark" },
+  ] as const
 
   return (
     <section className="mt-10">
@@ -58,31 +57,52 @@ function ProjectEmbeds({
         Add interesting embeds to your website or README.
       </p>
 
-      <h3 className="mb-3 text-sm font-medium">License</h3>
+      <div className="flex flex-col gap-8">
+        {groups.map((group) => (
+          <div key={group.kind}>
+            <h3 className="mb-3 text-sm font-medium">{group.title}</h3>
+            <div className="flex flex-col gap-4">
+              {themes.map((theme) => {
+                const previewSrc = `/embed/${slug}/${group.kind}/${theme.id}/opengraph-image`
+                const embedSrc = `${siteConfig.url}/embed/${slug}/${group.kind}/${theme.id}/${group.kind}.png`
 
-      <div className="flex flex-col gap-4">
-        {embeds.map((embed) => (
-          <div key={embed.id} className="overflow-hidden rounded-xl border">
-            <div className="flex items-center justify-between gap-3 border-b bg-muted/40 px-4 py-3">
-              <span className="text-sm font-medium">{embed.label}</span>
-              <a
-                href={projectUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-block transition-opacity hover:opacity-80"
-              >
-                <Image
-                  src={embed.previewSrc}
-                  alt={`${projectName} on ${siteConfig.name}`}
-                  width={160}
-                  height={28}
-                  unoptimized
-                  className="h-7 w-40"
-                />
-              </a>
-            </div>
-            <div className="p-3">
-              <CopyBlock code={embed.code} />
+                return (
+                  <div
+                    key={`${group.kind}-${theme.id}`}
+                    className="overflow-hidden rounded-xl border"
+                  >
+                    <div className="flex items-center justify-between gap-3 border-b bg-muted/40 px-4 py-3">
+                      <span className="text-sm font-medium">{theme.label}</span>
+                      <a
+                        href={projectUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-block transition-opacity hover:opacity-80"
+                      >
+                        <Image
+                          src={previewSrc}
+                          alt={`${projectName} on ${siteConfig.name}`}
+                          width={group.width}
+                          height={group.height}
+                          unoptimized
+                          className="h-7 w-auto"
+                        />
+                      </a>
+                    </div>
+                    <div className="p-3">
+                      <CopyBlock
+                        code={buildEmbedHtml({
+                          projectUrl,
+                          projectName,
+                          embedSrc,
+                          width: group.width,
+                          height: group.height,
+                        })}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         ))}

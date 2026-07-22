@@ -3,6 +3,7 @@ import { siteConfig } from "lib/site"
 import { type Project } from "components/projects-grid"
 
 export type EmbedTheme = "light" | "dark"
+export type EmbedKind = "license" | "added"
 
 const themes = {
   light: {
@@ -16,6 +17,9 @@ const themes = {
     text: "#F9FAFB",
   },
 } as const
+
+const embedKinds: EmbedKind[] = ["license", "added"]
+const embedThemes: EmbedTheme[] = ["light", "dark"]
 
 async function fetchProjectLicense(
   githubUrl: string | undefined
@@ -51,16 +55,38 @@ async function fetchProjectLicense(
   }
 }
 
-async function getEmbedText(project: Project): Promise<string> {
+async function getEmbedText(
+  project: Project,
+  kind: EmbedKind
+): Promise<string> {
+  if (kind === "added") {
+    return `Added to: ${siteConfig.name}`
+  }
+
   const license = await fetchProjectLicense(project.socials?.github)
   if (license) {
     return `License: ${license}`
   }
-  return `Featured on: ${siteConfig.name}`
+  return `License: Unknown`
 }
 
 function getEmbedTheme(theme: EmbedTheme) {
   return themes[theme]
 }
 
-export { fetchProjectLicense, getEmbedText, getEmbedTheme, themes }
+function getEmbedSize(kind: EmbedKind) {
+  if (kind === "added") {
+    return { width: 200, height: 28 }
+  }
+  return { width: 160, height: 28 }
+}
+
+export {
+  embedKinds,
+  embedThemes,
+  fetchProjectLicense,
+  getEmbedSize,
+  getEmbedText,
+  getEmbedTheme,
+  themes,
+}

@@ -1,5 +1,5 @@
 import { copyFile, readdir, stat } from "node:fs/promises"
-import { dirname, join } from "node:path"
+import { basename, dirname, join } from "node:path"
 
 async function walk(dir) {
   const entries = await readdir(dir)
@@ -12,11 +12,13 @@ async function walk(dir) {
         return
       }
       if (name === "opengraph-image") {
-        await copyFile(full, join(dirname(full), "license.png"))
+        // /embed/{slug}/{kind}/{theme}/opengraph-image → {kind}.png
+        const kind = basename(dirname(dirname(full)))
+        await copyFile(full, join(dirname(full), `${kind}.png`))
       }
     })
   )
 }
 
 await walk(join(process.cwd(), "out/embed"))
-console.log("Copied embed images to license.png")
+console.log("Copied embed images to license.png / added.png")
