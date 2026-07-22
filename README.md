@@ -1,6 +1,6 @@
 # EmbedCatalog
 
-<a href="https://embedcatalog.digital/"><img align="right" width="250" src="https://github.com/EmbedCatalog/embedcatalog/raw/main/public/images/logo.png" alt="EmbedCatalog" title="EmbedCatalog" /></a>
+<a href="https://embedcatalog.com"><img align="right" width="250" src="https://github.com/EmbedCatalog/embedcatalog/raw/main/public/images/logo.png" alt="EmbedCatalog" title="EmbedCatalog" /></a>
 
 [![license](https://img.shields.io/github/license/EmbedCatalog/embedcatalog?logo=&color=fff)](https://github.com/EmbedCatalog/embedcatalog/blob/main/LICENSE)
 [![x.com](https://img.shields.io/badge/twitter-000?logo=x&logoColor=fff)](https://x.com/aanthonymax)
