@@ -6,11 +6,11 @@
 [![embdecatalog](https://embedcatalog.com/embed/hmpl/added/dark/added.png)](https://embedcatalog.com)
 [![x.com](https://img.shields.io/badge/twitter-000?logo=x&logoColor=fff)](https://x.com/aanthonymax)
 
-One day, I had the idea to create a platform for projects. But I noticed that in most similar services, you just add your project, and the platforms don't care at all. I'd like to do it differently.
+This is a free project catalog where you can add yours and get access to interesting and practical embeds.
 
-**Briefly about the name**
+**Briefly about the idea**
 
-But first, I'd like to say that the name was invented in ten minutes. It may be short, but I think it's perfectly fitting.
+While developing open source projects, one day I came up with the idea of ​​making a website for practical pictures for projects, since I wanted to somehow highlight my project rather than adding default ones. I don't want to copy others, so I made a catalog where each project will have a relatively unique embed.
 
 ## About
 
