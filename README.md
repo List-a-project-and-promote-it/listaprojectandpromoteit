@@ -12,17 +12,15 @@ This is a free project catalog where you can add yours and get access to interes
 
 While developing open source projects, one day I came up with the idea of ​​making a website for practical pictures for projects, since I wanted to somehow highlight my project rather than adding default ones. I don't want to copy others, so I made a catalog where each project will have a relatively unique embed.
 
-## About
+## Embeds
 
-This platform represents the same lists we've become accustomed to, but with one caveat: all projects included in the list are taken into long-term, periodic promotion.
+The platform currently has the following list of embeds:
 
-I don't like the word "promotion" because it's so overused, and when we hear it, we immediately think of website advertising. However, here it's simply appropriate, so that's why it's used.
-
-## What kind of promotion is this?
-
-Essentially, we're not focused on building an audience on the platform, although that's important too. The idea is to periodically work on a project, like an ant working on its visibility. The platform accepts a certain number of projects per month, and the project team will simply add them to relevant articles and create content about them on other platforms. For example, tweets, etc.
-
-This flow allows us to work on projects as efficiently as possible. Also, if we move on to the next month, the number of projects will allow us to work on those from previous months.
+| Embed        | Light                                                                                                                       | Dark                                                                                                                            | Plan    |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| License      | [![license](https://embedcatalog.com/embed/hmpl/license.png?theme=light)](https://embedcatalog.com/projects/hmpl)           | [![license](https://embedcatalog.com/embed/hmpl/license-dark.png?theme=dark)](https://embedcatalog.com/projects/hmpl)           | Free    |
+| Added to     | [![added](https://embedcatalog.com/embed/hmpl/added.png?theme=light)](https://embedcatalog.com/projects/hmpl)               | [![added](https://embedcatalog.com/embed/hmpl/added-dark.png?theme=dark)](https://embedcatalog.com/projects/hmpl)               | Free    |
+| Organization | [![organization](https://embedcatalog.com/embed/hmpl/organization.png?theme=light)](https://embedcatalog.com/projects/hmpl) | [![organization](https://embedcatalog.com/embed/hmpl/organization-dark.png?theme=dark)](https://embedcatalog.com/projects/hmpl) | Premium |
 
 ## What projects are suitable?
 
@@ -35,13 +33,15 @@ This flow allows us to work on projects as efficiently as possible. Also, if we 
 
 Commercial ones are also taken into work.
 
+## About premium
+
+Essentially, we are not focused on creating an audience on the platform, although this is also important. The idea is to work on a project periodically, like an ant working on its visibility. The platform accepts a certain number of premium projects per month, and the project team will simply add them to relevant articles and create content about them on other platforms. For example, tweets, etc.
+
+This flow allows us to work on projects as efficiently as possible. Also, if we move on to the next month, the number of projects will allow us to work on previous months' projects.
+
 ## Is there a report on the work done?
 
 Yes, of course they will.
-
-## Important clarification
-
-Platforms like these often generate negative reviews, but this platform is simply created as a bonus to the main promotion. There are no guarantees of results; it's just a matter of adding to an article, tweeting, and so on. We do what we can.
 
 ## Tech stack
 
